@@ -14,7 +14,10 @@ public class KodillaCourseApplication {
         System.out.println(movieStore);
         //===13.2 Zadanie: stworzenie serwisu zamówień produktów
         System.out.println();
-        ProductOrderRequest newRequest = new ProductOrderRequest();
+        ProductOrderRequest newRequest = new ProductOrderRequest(
+                new User("Ardian", "Mienkovsky"),
+                new Product("Klapki", 15),
+                30, "Allegro");
         OrderProcessor orderProcessor = new OrderProcessor(
                 new MailService(), new ProductOrderService(), new ProductOrderRepository());
         orderProcessor.process(newRequest);
@@ -26,5 +29,7 @@ public class KodillaCourseApplication {
         Food2DoorRequest newFoodRequest = new Food2DoorRequest(supplierId, sampleProduct, quantity);
         Food2DoorProcessor foodProcessor = new Food2DoorProcessor();
         foodProcessor.process(newFoodRequest);
+        //===13.4 Przełożenie teorii na praktykę cz.2
+        System.out.println();
     }
 }

@@ -21,8 +21,8 @@ public class OrderProcessor {
         boolean isOrdered = orderService.order(orderRequest.getUser(), orderRequest.getProduct(), orderRequest.getQuantity());
 
         if (isOrdered) {
-            informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getProduct(), orderRequest.getQuantity());
+            informationService.inform(orderRequest.getUser()); //orderRepository powinien byc skladnikiem orderService
+            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getProduct(), orderRequest.getQuantity()); //co gry orderRep sie wywali
             return new OrderDto(orderRequest.getUser(), orderRequest.getProduct(),true);
         } else {
             return new OrderDto(orderRequest.getUser(), orderRequest.getProduct(), false);

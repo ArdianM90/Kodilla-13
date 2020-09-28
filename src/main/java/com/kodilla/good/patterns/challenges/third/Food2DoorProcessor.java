@@ -10,7 +10,7 @@ import java.util.List;
 public class Food2DoorProcessor {
     public void process(Food2DoorRequest newFoodRequest) {
         final List<Supplier> suppliersList = new ArrayList<>();
-        suppliersList.add(new ExtraFoodShop());
+        suppliersList.add(new ExtraFoodShop()); //powinny byc przekazywane z zewnatrz przez konstruktor
         suppliersList.add(new GlutenFreeShop());
         suppliersList.add(new HealthyShop());
         String expectedSupplier = newFoodRequest.getSupplierId();

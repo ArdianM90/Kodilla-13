@@ -2,11 +2,19 @@ package com.kodilla.good.patterns.challenges.second;
 
 import com.kodilla.good.patterns.challenges.second.interfaces.OrderRequest;
 
+
 public class ProductOrderRequest implements OrderRequest {
-    private final User user = new User("Ardian", "Mienkovsky");
-    private final Product product = new Product("Klapki", 15);
-    private final int quantity = 15;
-    private final String from = "Allegro";
+    public ProductOrderRequest(User user, Product product, int quantity, String from) {
+        this.user = user;
+        this.product = product;
+        this.quantity = 15;
+        this.from = from;
+    }
+
+    private final User user;
+    private final Product product;
+    private final int quantity;
+    private final String from;
 
     public User getUser() {
         return user;

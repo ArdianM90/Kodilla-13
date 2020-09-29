@@ -4,5 +4,5 @@ import com.kodilla.good.patterns.challenges.second.Product;
 import com.kodilla.good.patterns.challenges.second.User;
 
 public interface OrderRepository {
-    void createOrder(User user, Product product, int quantity);
+    boolean createOrder(User user, Product product, int quantity);
 }

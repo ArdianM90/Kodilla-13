@@ -19,7 +19,7 @@ public class KodillaCourseApplication {
                 new Product("Klapki", 15),
                 30, "Allegro");
         OrderProcessor orderProcessor = new OrderProcessor(
-                new MailService(), new ProductOrderService(), new ProductOrderRepository());
+                new MailService(), new ProductOrderService());
         orderProcessor.process(newRequest);
         //===13.4 Przełożenie teorii na praktykę cz.1
         System.out.println();

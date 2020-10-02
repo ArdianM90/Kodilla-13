@@ -1,6 +1,9 @@
 package com.kodilla;
 
 import com.kodilla.good.patterns.challenges.first.MovieStore;
+import com.kodilla.good.patterns.challenges.fourth.Airport;
+import com.kodilla.good.patterns.challenges.fourth.FindFlightService;
+import com.kodilla.good.patterns.challenges.fourth.Flight;
 import com.kodilla.good.patterns.challenges.second.*;
 import com.kodilla.good.patterns.challenges.third.Food2DoorProcessor;
 import com.kodilla.good.patterns.challenges.third.Food2DoorRequest;
@@ -64,6 +67,32 @@ public class KodillaCourseApplication {
 
         Food2DoorProcessor foodProcessor = new Food2DoorProcessor(suppliersList);
         foodProcessor.process(newFoodRequest);
-        //===13.4 Przełożenie teorii na praktykę cz.2
+        //===13.5 Przełożenie teorii na praktykę cz.2
+        Airport airportWaw = new Airport("Warszawa", "WAW");
+        Airport airportWmi = new Airport("Modlin", "WMI");
+        Airport airportWro = new Airport("Wroclaw", "WRO");
+        Airport airportPoz = new Airport("Poznan", "POZ");
+        Airport airportKrk = new Airport("Krakow", "KRK");
+        Airport airportKtw = new Airport("Katowice", "KTW");
+
+        FindFlightService myService = new FindFlightService();
+        List<Airport> through = new ArrayList<>();
+        through.add(airportWmi);
+        myService.addFlight(airportWaw, airportKrk, null);
+        myService.addFlight(airportKrk, airportWaw, null);
+        myService.addFlight(airportWaw, airportWro, null);
+        myService.addFlight(airportWro, airportWaw, null);
+        myService.addFlight(airportWaw, airportKtw, through);
+        myService.addFlight(airportKtw, airportWaw, through);
+        myService.addFlight(airportWaw, airportPoz, through);
+        myService.addFlight(airportPoz, airportWaw, through);
+
+        myService.findAllFlightsFrom(airportWaw);
+        System.out.println();
+        myService.findAllFlightsTo(airportKrk);
+        System.out.println();
+        myService.findAllFlightsFromWithStopover(airportWaw, through);
+        System.out.println();
+        myService.findAllFlightsToWithStopover(airportWaw, through);
     }
 }

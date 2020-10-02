@@ -11,8 +11,8 @@ public class OrderedProducts {
     private final Map<OrderedProductsKey, OrderedProductValue> orderedProducts = new HashMap<>();
 
     public void add(FoodProduct product, int quantity) {
-        OrderedProductsKey newKey = new OrderedProductsKey(product.getProductName(), quantity);
-        OrderedProductValue newValue = new OrderedProductValue(product.getProductName(), product.getPrice(), quantity);
+        OrderedProductsKey newKey = new OrderedProductsKey(product.getName(), quantity);
+        OrderedProductValue newValue = new OrderedProductValue(product, quantity);
         orderedProducts.put(newKey, newValue);
     }
 
@@ -32,5 +32,11 @@ public class OrderedProducts {
         List<Integer> quantities = new ArrayList<>();
         orderedProducts.values().forEach(e -> quantities.add(e.getQuantity()));
         return quantities;
+    }
+
+    public List<FoodProduct> getProductsList() {
+        List<FoodProduct> products = new ArrayList<>();
+        orderedProducts.values().forEach(e -> products.add(e.getProduct()));
+        return products;
     }
 }

@@ -22,4 +22,8 @@ public class Food2DoorRequest {
     public List<Integer> getProductsQuantities() {
         return orderedProducts.getProductsQuantitiesList();
     }
+
+    public List<FoodProduct> getProductsList() {
+        return orderedProducts.getProductsList();
+    }
 }

@@ -9,6 +9,6 @@ public class ExtraFoodShop extends Supplier {
 
     @Override
     public void process(FoodProduct product, int quantity) {
-        System.out.println("Realizacja zamówienia na "+quantity+" szt. "+product.getProductName()+", w sposób specyficzny dla sklepu ExtraFoodShop");
+        System.out.println("Realizacja zamówienia na "+quantity+" szt. "+product.getName()+", w sposób specyficzny dla sklepu ExtraFoodShop");
     }
 }

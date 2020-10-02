@@ -18,13 +18,13 @@ public class Supplier {
     }
 
     public boolean canDeliver(String name) {
-        return availableProducts.stream().anyMatch(e -> e.getProductName().equals(name));
+        return availableProducts.stream().anyMatch(e -> e.getName().equals(name));
     }
 
     public int howManyCanDeliverFromList(List<String> orderedProducts) {
         int counter = 0;
         for (int i = 0; i < availableProducts.size(); i++) {
-            String productFromSupplierList = availableProducts.get(i).getProductName();
+            String productFromSupplierList = availableProducts.get(i).getName();
             for (int j = 0; j < orderedProducts.size(); j++) {
                 String productFromOrderList = orderedProducts.get(j);
                 if (productFromSupplierList.equals(productFromOrderList)) {

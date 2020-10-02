@@ -13,23 +13,17 @@ public class Food2DoorProcessor {
     }
 
     public void process(Food2DoorRequest newFoodRequest) {
-        List<String> orderedProductsNamesList = newFoodRequest.getProductsNames();
-        List<Supplier> supplierForEachProduct = computeSuppliersList(orderedProductsNamesList);
+        List<Supplier> supplierForEachProduct = computeSuppliersList(newFoodRequest.getProductsNames());
         for (int i = 0; i < supplierForEachProduct.size(); i++) {
-            String productName = newFoodRequest.getProductsNames().get(i);
-            int productPrice = newFoodRequest.getProductsPriceList().get(i);
+            FoodProduct product = newFoodRequest.getProductsList().get(i);
             int quantity = newFoodRequest.getProductsQuantities().get(i);
-            supplierForEachProduct.get(i).process(new FoodProduct(productName, productPrice), quantity);
+            supplierForEachProduct.get(i).process(product, quantity);
         }
     }
 
     private List<Supplier> computeSuppliersList(List<String> productsWithoutSupplier) {
         int exitArraySize = productsWithoutSupplier.size();
-        List<Supplier> supplierForEachProduct = new ArrayList<>();
-        for (int i = 0; i < exitArraySize; i++) {
-            supplierForEachProduct.add(i, null);
-        }
-
+        List<Supplier> supplierForEachProduct = setListNull(exitArraySize);
         while (supplierForEachProduct.contains(null)) {
             Supplier mostEffectiveSupplier = findMostEfficientSupplier(productsWithoutSupplier);
             for (int j = 0; j < exitArraySize; j++) {
@@ -40,6 +34,14 @@ public class Food2DoorProcessor {
             }
         }
         return supplierForEachProduct;
+    }
+
+    private List<Supplier> setListNull(int size) {
+        List<Supplier> exitList = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            exitList.add(i, null);
+        }
+        return exitList;
     }
 
     private Supplier findMostEfficientSupplier(List<String> orderedProductsList) {

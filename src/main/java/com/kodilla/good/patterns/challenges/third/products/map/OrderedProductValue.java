@@ -1,25 +1,29 @@
 package com.kodilla.good.patterns.challenges.third.products.map;
 
+import com.kodilla.good.patterns.challenges.third.FoodProduct;
+
 public class OrderedProductValue {
-    private final String name;
-    private final int price;
+    private final FoodProduct product;
     private final int quantity;
 
-    public OrderedProductValue(String name, int price, int quantity) {
-        this.name = name;
-        this.price = price;
+    public OrderedProductValue(FoodProduct product, int quantity) {
+        this.product = product;
         this.quantity= quantity;
     }
 
     public String getName() {
-        return name;
+        return product.getName();
     }
 
     public int getPrice() {
-        return price;
+        return product.getPrice();
     }
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public FoodProduct getProduct() {
+        return product;
     }
 }

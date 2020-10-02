@@ -11,7 +11,7 @@ public class FoodProduct {
         this.price = price;
     }
 
-    public String getProductName() {
+    public String getName() {
         return productName;
     }
 

@@ -65,6 +65,5 @@ public class KodillaCourseApplication {
         Food2DoorProcessor foodProcessor = new Food2DoorProcessor(suppliersList);
         foodProcessor.process(newFoodRequest);
         //===13.4 Przełożenie teorii na praktykę cz.2
-        System.out.println();
     }
 }

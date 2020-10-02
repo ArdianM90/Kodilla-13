@@ -1,25 +1,25 @@
 package com.kodilla.good.patterns.challenges.third;
 
+import com.kodilla.good.patterns.challenges.third.products.map.OrderedProducts;
+
+import java.util.List;
+
 public class Food2DoorRequest {
-    private String supplierId = "ExtraFoodShop";
-    private FoodProduct foodProduct = new FoodProduct();
-    private int quantity = 4;
+    private final OrderedProducts orderedProducts = new OrderedProducts();
 
-    public Food2DoorRequest(String supplierId, FoodProduct foodProduct, int quantity) {
-        this.supplierId = supplierId;
-        this.foodProduct = foodProduct;
-        this.quantity = quantity;
+    public void addToOrder(FoodProduct product, int quantity) {
+        orderedProducts.add(product, quantity);
     }
 
-    public String getSupplierId() {
-        return supplierId;
+    public List<String> getProductsNames() {
+        return orderedProducts.getProductsNamesList();
     }
 
-    public FoodProduct getFoodProduct() {
-        return foodProduct;
+    public List<Integer> getProductsPriceList() {
+        return orderedProducts.getProductsPriceList();
     }
 
-    public int getQuantity() {
-        return quantity;
+    public List<Integer> getProductsQuantities() {
+        return orderedProducts.getProductsQuantitiesList();
     }
 }

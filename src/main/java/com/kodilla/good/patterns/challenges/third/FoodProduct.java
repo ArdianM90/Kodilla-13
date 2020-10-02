@@ -1,19 +1,37 @@
 package com.kodilla.good.patterns.challenges.third;
 
-public class FoodProduct {
-    private final String productId = "Frytki";
-    private final int price = 15;
-    private boolean isAvailable = true;
+import java.util.Objects;
 
-    public String getProductId() {
-        return productId;
+public class FoodProduct {
+    private final String productName;
+    private final int price;
+
+    public FoodProduct(String productName, int price) {
+        this.productName = productName;
+        this.price = price;
+    }
+
+    public String getProductName() {
+        return productName;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        FoodProduct that = (FoodProduct) o;
+        return price == that.price &&
+                Objects.equals(productName, that.productName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productName, price);
     }
 }
